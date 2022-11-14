@@ -58,7 +58,7 @@ namespace Organized
             Directory.CreateDirectory(appDataFolder + "\\todo");
             Directory.CreateDirectory(appDataFolder + "\\user-settings");
         }  
-        protected static string HashString(string inputString)
+        public static string HashString(string inputString)
         {
             byte[] encData = SHA256.Create().ComputeHash(Encoding.UTF8.GetBytes(inputString));
             StringBuilder bob = new StringBuilder();

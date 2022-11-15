@@ -96,7 +96,6 @@ namespace Organized
             XmlNodeList list = fajl.SelectNodes("USERS/USER/username");
             foreach (XmlNode node in list)
             {
-                MessageBox.Show(node.InnerText);
                 if (node.InnerText == HashString(username)) return false;
             }
             XmlElement korisnik = fajl.CreateElement("USER");

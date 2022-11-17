@@ -14,9 +14,9 @@ namespace Organized
         private bool solid;
         private Color boja;
 
-        public Paint(Graphics platno)
+        public Paint(Bitmap platno)
         {
-            this.platno = platno;
+            this.platno = Graphics.FromImage(platno);
         }
 
         public void PostaviDebljinu(int debljina)

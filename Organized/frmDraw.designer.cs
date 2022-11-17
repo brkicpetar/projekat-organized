@@ -133,6 +133,7 @@
             this.rdbFreehand.TabStop = true;
             this.rdbFreehand.Text = "freehand";
             this.rdbFreehand.UseVisualStyleBackColor = true;
+            this.rdbFreehand.CheckedChanged += new System.EventHandler(this.rdbFreehand_CheckedChanged);
             // 
             // pictureBox2
             // 
@@ -210,7 +211,10 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pbxPlatno);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmDraw";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Draw a sketch...";

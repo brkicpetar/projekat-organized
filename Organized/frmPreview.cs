@@ -21,6 +21,7 @@ namespace Organized
         private void frmPreview_Load(object sender, EventArgs e)
         {
             pictureBox1.Image = slika;
+            pictureBox1.Refresh();
         }
     }
 }

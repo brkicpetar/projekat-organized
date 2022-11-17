@@ -22,6 +22,7 @@ namespace Organized
         private string[] slike;
         private void UcitajSlike()
         {
+            lbxNotebook.Items.Clear();
             slike = Directory.GetFiles(user.KorisnikovFolder + "sketches\\");
             foreach (var item in slike)
             {
@@ -40,6 +41,13 @@ namespace Organized
                 frmPreview preview = new frmPreview(Bitmap.FromFile(user.KorisnikovFolder + "sketches\\" + lbxNotebook.SelectedItem));
                 preview.ShowDialog();
             }
+        }
+
+        private void pbxNew_Click(object sender, EventArgs e)
+        {
+            frmDraw draw = new frmDraw(user);
+            draw.ShowDialog();
+            UcitajSlike();
         }
     }
 }

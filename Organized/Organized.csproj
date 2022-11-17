@@ -49,20 +49,56 @@
     <Compile Include="CalendarElementBlank.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="CalendarElementBlank.designer.cs">
+    <Compile Include="CalendarElementBlank.Designer.cs">
       <DependentUpon>CalendarElementBlank.cs</DependentUpon>
     </Compile>
     <Compile Include="CalendarElementDay.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="CalendarElementDay.designer.cs">
+    <Compile Include="CalendarElementDay.Designer.cs">
       <DependentUpon>CalendarElementDay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDraw.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDraw.Designer.cs">
+      <DependentUpon>frmDraw.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmEvent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEvent.Designer.cs">
+      <DependentUpon>frmEvent.cs</DependentUpon>
     </Compile>
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmNotebook.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNotebook.Designer.cs">
+      <DependentUpon>frmNotebook.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPreview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPreview.Designer.cs">
+      <DependentUpon>frmPreview.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRegister.Designer.cs">
+      <DependentUpon>frmRegister.cs</DependentUpon>
     </Compile>
     <Compile Include="Paint.cs" />
     <Compile Include="Program.cs" />
@@ -74,8 +110,26 @@
     <EmbeddedResource Include="CalendarElementDay.resx">
       <DependentUpon>CalendarElementDay.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmDraw.resx">
+      <DependentUpon>frmDraw.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEvent.resx">
+      <DependentUpon>frmEvent.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNotebook.resx">
+      <DependentUpon>frmNotebook.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPreview.resx">
+      <DependentUpon>frmPreview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRegister.resx">
+      <DependentUpon>frmRegister.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -85,6 +139,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -100,6 +155,11 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="UserSettings-template.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\calendar.png" />
+    <None Include="Resources\list.png" />
     <Content Include="Users.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

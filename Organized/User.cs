@@ -11,10 +11,11 @@ using System.Windows.Forms;
 
 namespace Organized
 {
-    internal class User
+    public class User
     {
         private string username;
         private string password;
+        private string name;
         private XmlDocument fajl;
         public User()
         {
@@ -49,15 +50,77 @@ namespace Organized
             get { return password; }
             set { password = value; }
         }
-
+        public string Name
+        {
+            get
+            {
+                XmlDocument settingsFile = new XmlDocument();
+                settingsFile.Load(KorisnikovFolder + "user-settings\\settings.xml");
+                return settingsFile.SelectSingleNode("SETTINGS/Name").InnerText;
+            }
+            set { name = value; }
+        }
+        internal string KorisnikovFolder
+        {
+            get { return Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\Organized\\" + HashString(username) + "\\"; }
+        }
+        public string DateFormat
+        {
+            get
+            {
+                XmlDocument settingsFile = new XmlDocument();
+                settingsFile.Load(KorisnikovFolder + "user-settings\\settings.xml");
+                XmlNodeList list = settingsFile.SelectNodes("SETTINGS/DateFormat");
+                return list[0].InnerText;
+            }
+        }
+        public string Language
+        {
+            get
+            {
+                XmlDocument settingsFile = new XmlDocument();
+                settingsFile.Load(KorisnikovFolder + "user-settings\\settings.xml");
+                XmlNodeList list = settingsFile.SelectNodes("SETTINGS/Language");
+                return list[0].InnerText;
+            }
+        }
         private void CreateStructure()
         {
-            string appDataFolder = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\Organized\\" + HashString(username);
-            Directory.CreateDirectory(appDataFolder);
-            Directory.CreateDirectory(appDataFolder + "\\sketches");
-            Directory.CreateDirectory(appDataFolder + "\\todo");
-            Directory.CreateDirectory(appDataFolder + "\\user-settings");
-        }  
+            Directory.CreateDirectory(KorisnikovFolder);
+            Directory.CreateDirectory(KorisnikovFolder + "sketches");
+            Directory.CreateDirectory(KorisnikovFolder + "todo");
+            Directory.CreateDirectory(KorisnikovFolder + "user-settings");
+        }
+        private void CreateUserSettings()
+        {
+            File.Copy("UserSettings-template.xml", KorisnikovFolder + "user-settings\\settings.xml", true);
+            XmlDocument settingsFile = new XmlDocument();
+            settingsFile.Load(KorisnikovFolder + "user-settings\\settings.xml");
+            XmlNode glGrana = settingsFile.SelectSingleNode("SETTINGS");
+            XmlElement name = settingsFile.CreateElement("Name");
+            name.InnerText = this.name;
+            glGrana.AppendChild(name);
+            XmlElement prviRadniDan = settingsFile.CreateElement("FirstWorkingDay");
+            prviRadniDan.InnerText = "-1";
+            glGrana.AppendChild(prviRadniDan);
+            XmlElement dateFormat = settingsFile.CreateElement("DateFormat");
+            dateFormat.InnerText = "dd.MM.yyyy.";
+            glGrana.AppendChild(dateFormat);
+            XmlElement language = settingsFile.CreateElement("Language");
+            language.InnerText = "en-US";
+            glGrana.AppendChild(language);
+            settingsFile.Save(KorisnikovFolder + "user-settings\\settings.xml");
+        }
+        public int FirstWorkingDay
+        {
+            get
+            {
+                XmlDocument settingsFile = new XmlDocument();
+                settingsFile.Load(KorisnikovFolder + "user-settings\\settings.xml");
+                XmlNodeList list = settingsFile.SelectNodes("SETTINGS/FirstWorkingDay");
+                return int.Parse(list[0].InnerText);
+            }
+        }
         internal static string HashString(string inputString)
         {
             byte[] encData = SHA256.Create().ComputeHash(Encoding.UTF8.GetBytes(inputString));
@@ -73,7 +136,7 @@ namespace Organized
             XmlNodeList korisnici = fajl.SelectNodes("USERS/USER");
             foreach (XmlNode korisnik in korisnici)
             {
-                if (HashString(korisnik.ChildNodes[0].InnerText.Trim()) == username.Trim() && HashString(korisnik.ChildNodes[1].InnerText.Trim()) == password.Trim())
+                if (korisnik.ChildNodes[0].InnerText.Trim() == HashString(username.Trim()) && korisnik.ChildNodes[1].InnerText.Trim() == HashString(password.Trim()))
                     return true;
             }
             return false;
@@ -111,6 +174,7 @@ namespace Organized
             korisnik.Attributes.Append(idKorisnika);
             fajl.Save("Users.xml");
             CreateStructure();
+            CreateUserSettings();
             return true;
         }
     }

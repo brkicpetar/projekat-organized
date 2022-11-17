@@ -46,6 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CalendarElementBlank.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CalendarElementBlank.designer.cs">
+      <DependentUpon>CalendarElementBlank.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CalendarElementDay.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CalendarElementDay.designer.cs">
+      <DependentUpon>CalendarElementDay.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -55,6 +67,12 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="User.cs" />
+    <EmbeddedResource Include="CalendarElementBlank.resx">
+      <DependentUpon>CalendarElementBlank.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CalendarElementDay.resx">
+      <DependentUpon>CalendarElementDay.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>

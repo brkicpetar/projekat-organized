@@ -48,7 +48,6 @@ namespace Organized
                         platno.FillEllipse(brush, A.X, A.Y, (float)Math.Abs(B.X - A.X), (float)Math.Abs(B.Y - A.Y));
                         break;
                     case Oblik.slobodnaRuka:
-                        //cekamo gosn Momcila
                         break;
                 }
             }
@@ -67,7 +66,6 @@ namespace Organized
                         platno.DrawEllipse(pen, A.X, A.Y, (float)Math.Abs(B.X - A.X), (float)Math.Abs(B.Y - A.Y));
                         break;
                     case Oblik.slobodnaRuka:
-                        //cekamo gosn Momcila
                         break;
                 }
             }
